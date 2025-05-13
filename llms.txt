@@ -1,19 +1,25 @@
-# Electric Clojure Unofficial Documentation
+# Electric Clojure Primer V3
 
 > Electric Clojure is a reactive web framework for Clojure and ClojureScript, enabling full-stack development with shared logic and real-time synchronization. This project provided unofficial documentation to aid in development.
 
-Electric Clojure aims to simplify the development of reactive web applications by allowing developers to write shared code for both the client and server. It leverages Clojure's functional programming paradigm to facilitate real-time data synchronization and seamless user experiences.
+> There are currently 2 versions of Electric Clojure - version 2 and version 3. The documents in this project describe Electric Clojure version 3 only.
 
 Electric is a Clojure(Script) framework for building **full-stack web applications** where application state is automatically synchronized between the *server* and *client browser* over WebSockets.
+
+Electric Clojure aims to simplify the development of reactive web applications by allowing developers to write shared code for both the client and server. It leverages Clojure's functional programming paradigm to facilitate real-time data synchronization and seamless user experiences.
+
 You write code using Electric's special **DSL (`e/defn`, `e/fn`, `e/client`, `e/server`)**, and the Electric **Runtime** manages the reactivity and network communication.
+
 It uses **Incremental Sequences (`incseq`)** to efficiently update data by sending only *diffs* (changes) over the network, making UIs highly responsive.
 Includes libraries for **DOM Manipulation** (`electric-dom3`) and building complex **Forms** (`electric-forms5`) that integrate seamlessly with its reactive model.
 
-There are currently 2 versions of Electric Clojure - version 2 and version 3. The documents in this project describe Electric Clojure version 3 only.
+## Gotchas
+-  *Electric fns in (let) bindings must be bound to names starting with an uppercase letter*.
+   -  The calling convention is to use lowercase to call clojure functions `(foo 1 2 3)`. 
+   -  Use uppercase to call electric functions. e.g.  `(Foo 1 2 3)`
+   -  You can override this with `e/call`, i.e. `(e/call foo 1 2 3)` will be an electric call.This is useful when the function is computed dynamically, e.g. `(e/call (if x Foo Bar) 1 2 3)`
 
-## Getting Started
-
-## Electric v3 Rules
+## Electric v3 Primer
 * [1. Electric Clojure Philosophy and Fundamentals](electric-v3-rules/01-electric-clojure-philosophy-and-fundamentals.md)
 * [2. Code Organization and Structure](electric-v3-rules/02-code-organization-and-structure.md)
 * [3. Reactive Programming Patterns](electric-v3-rules/03-reactive-programming-patterns.md)
