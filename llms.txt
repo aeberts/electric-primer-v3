@@ -1,0 +1,67 @@
+# Electric Clojure Unofficial Documentation
+
+> Electric Clojure is a reactive web framework for Clojure and ClojureScript, enabling full-stack development with shared logic and real-time synchronization. This project provided unofficial documentation to aid in development.
+
+Electric Clojure aims to simplify the development of reactive web applications by allowing developers to write shared code for both the client and server. It leverages Clojure's functional programming paradigm to facilitate real-time data synchronization and seamless user experiences.
+
+Electric is a Clojure(Script) framework for building **full-stack web applications** where application state is automatically synchronized between the *server* and *client browser* over WebSockets.
+You write code using Electric's special **DSL (`e/defn`, `e/fn`, `e/client`, `e/server`)**, and the Electric **Runtime** manages the reactivity and network communication.
+It uses **Incremental Sequences (`incseq`)** to efficiently update data by sending only *diffs* (changes) over the network, making UIs highly responsive.
+Includes libraries for **DOM Manipulation** (`electric-dom3`) and building complex **Forms** (`electric-forms5`) that integrate seamlessly with its reactive model.
+
+There are currently 2 versions of Electric Clojure - version 2 and version 3. The documents in this project describe Electric Clojure version 3 only.
+
+## Getting Started
+
+## Electric v3 Rules
+* [1. Electric Clojure Philosophy and Fundamentals](electric-v3-rules/01-electric-clojure-philosophy-and-fundamentals.md)
+* [2. Code Organization and Structure](electric-v3-rules/02-code-organization-and-structure.md)
+* [3. Reactive Programming Patterns](electric-v3-rules/03-reactive-programming-patterns.md)
+* [4. Client-Server Patterns](electric-v3-rules/04-client-server-patterns.md)
+* [5. UI Patterns and Best Practices](electric-v3-rules/05-ui-patterns-and-best-practices.md)
+* [6. Advanced Patterns](electric-v3-rules/06-advanced-patterns.md)
+* [7. Testing and Debugging](electric-v3-rules/07-testing-and-debugging.md)
+* [8. Deployment and Production](electric-v3-rules/08-deployment-and-production.md)
+* [9. Idioms and Conventions](electric-v3-rules/09-idioms-and-conventions.md)
+
+## Electric v3 Code Examples:
+- [Two Clocks](electric-v3-code-examples/two_clocks.cljc): demonstrates the concept of streaming lexical scope with two clocks (client and server) computing the time skew, showcasing automatic network data sync and reactive DOM rendering in a multi-tier application.
+- [Forms Inline](electric-v3-code-examples/forms_inline.cljc): Concurrent inline form submissions with individual field interactions handled by separate `Form!` components, leveraging the `e/amb` structure for concurrent server interactions without additional complexity.
+- [Explorer](electric-v3-code-examples/explorer.cljc): A server-streamed virtual scroll feature for a file system browser in ClojureScript is demonstrated, showcasing efficient differential, server-streamed data loading and inline data fetching to prevent request waterfalls, enabling high-performance UI rendering with minimal code complexity.
+- [Todos](electric-v3-code-examples/todos.cljc): demonstrates a functional todo list application with optimistic create-new functionality and failure handling for retry states, emphasizing uncontrolled remote transaction submission and dynamic scoping.
+- [System Properties](electric-v3-code-examples/system_properties.cljc): demonstrates a reactive client/server data flow using Electric v3, with a server-side query updating an HTML table based on user input, showcasing direct query/view composition and efficient reactive loops for rendering table rows.
+- [Form List](electric-v3-code-examples/form_list.cljc): A demonstration of composing forms as values in a list, where multiple forms are bound to the same server entity and sent concurrently, showcasing server states handling dirty/failure/retry scenarios effectively.
+- [Todomvc](electric-v3-code-examples/todomvc.cljc): demonstrates a TodoMVC application with functions for querying and manipulating todo items, including features like filtering, editing, and canceling edits.
+- [Backpressure](electric-v3-code-examples/backpressure.cljc): Demonstrates backpressure and concurrency control in ClojureScript using Electric, showcasing lazy sampling, work-skipping, and low-level concurrency management features for efficient reactive programming.
+- [Dir Tree](electric-v3-code-examples/dir_tree.cljc): A recursive directory traversal function which demonstrates Electric v3's client/server transfer semantics, allowing for in-flight rendering of a directory structure on the client with seamless control flow between client and server.
+- [Token Explainer](electric-v3-code-examples/token_explainer.cljc): demonstrates using `e/Token` in ClojureScript to model latency, success, failure, and retry in a server RPC context, turning callbacks into values for transactional event processing in Electric v3.
+- [Webview Diffs](electric-v3-code-examples/webview_diffs.cljc): demonstrates a dynamic table generation with tapped row and column diffs, showcasing the use of a column picker and log clearing functionality.
+- [Temperature2](electric-v3-code-examples/temperature2.cljc): Demonstrates the use of `e/amb` in ClojureScript to efficiently gather state from concurrent processes in a temperature converter application, propagating user interaction state to the app root via a return path.
+- [Typeahead](electric-v3-code-examples/typeahead.cljc): A typeahead component that filters and displays options based on user input, with controlled behavior when the input field is focused.
+- [Inputs Local](electric-v3-code-examples/inputs_local.cljc): Demonstration of synchronous local input patterns in ClojureScript using uncontrolled and controlled states, showcasing simple state management and form synchronization with fine-grained reactivity considerations.
+- [Webview1](electric-v3-code-examples/webview1.cljc): A database-backed webview with reactive updates, server-side filtering, and differential collection updates for efficient data handling and UI rendering.
+- [Svg](electric-v3-code-examples/svg.cljc): An SVG animation with reactive behavior driven by a JavaScript cosine function.
+- [Reagent Interop](electric-v3-code-examples/reagent_interop.cljc): Reagent (React.js) integration with Electric, allowing reactive mouse coordinates to be passed from Electric to Reagent through props.
+- [Fizzbuzz](electric-v3-code-examples/fizzbuzz.cljc): demonstrates the use of Electric v3 for implementing differential dataflow in UI, showcasing incremental computation updates and reactive collection handling through diffs propagation in an Electric DAG.
+- [Lifecycle](electric-v3-code-examples/lifecycle.cljc): demonstrate object lifecycle management of Reactive Electric functions with mount and unmount phases, dynamic extent similar to RAII, and concurrent event processing within a do sequence.
+- [Webview2](electric-v3-code-examples/webview2.cljc): Demonstration of Electric Lambda with Typeahead, dynamic columns, and server-side filtering support for large collections in a web application using ClojureScript.
+- [Counter](electric-v3-code-examples/counter.cljc): A multiplayer counter application with a progress indicator demonstrating concurrent event processing and the use of reactive lambda functions for client/server interactions.
+- [Webview Column Picker](electric-v3-code-examples/webview_column_picker.cljc): A dynamic column picker component showcasing a declarative approach with reactive UI elements and concurrent DOM effects, emphasizing composability and ease of understanding in software architecture.
+- [Form Service](electric-v3-code-examples/form_service.cljc): demonstrating the creation of a user form server, form submission handling, and a user service for managing concurrent form edits.
+- [Timer](electric-v3-code-examples/timer.cljc): A timer GUI application with a progress indicator showing elapsed time and allowing users to set a duration, reset the timer, and adjust the duration using a range input.
+- [Chat Monitor](electric-v3-code-examples/chat_monitor.cljc): A multiplayer chat app with authentication, presence tracking, and optimistic updates, showcasing shared global state among connected sessions and the use of Electric library for real-time updates and user interaction.
+- [Todomvc Composed](electric-v3-code-examples/todomvc_composed.cljc): A TodoMVC application composed using Hyperfiddle's electric3 library, demonstrating the creation of cascading popovers for UI elements.
+- [Custom Serialization](electric-v3-code-examples/custom_serialization.cljc): Custom serialization of a ClojureScript type `CustomType` for bidirectional communication between client and server using Hyperfiddle's `e/client` and `e/server` functions.
+- [Amb](electric-v3-code-examples/amb.md): `e/amb` in Electric is a primitive for representing concurrent reactive processes, holding values in superposition and enabling auto-mapping for differential collections, distinct from Clojure vectors, with tables reactive at element granularity and used with `e/for` to control resource allocation.
+- [Form Explainer](electric-v3-code-examples/form_explainer.md): Transactional server forms with commit/discard buttons, dirty field highlighting, and error handling affordances, using `Input!` for transactional inputs and `Form!` for transactional forms with error states.
+
+## Electric Tutorial
+1. [Electric DSL & Reactivity](electric-v3-tutorial/01_electric_dsl___reactivity_.md)
+2. [Incremental Sequences (incseq)](electric-v3-tutorial/02_incremental_sequences__incseq__.md)
+3. [Electric Runtime](electric-v3-tutorial/03_electric_runtime_.md)
+4. [DOM Manipulation (electric-dom3)](electric-v3-tutorial/04_dom_manipulation__electric_dom3__.md)
+5. [Forms (electric-forms5)](electric-v3-tutorial/05_forms__electric_forms5__.md)
+6. [Mount Points & Tags](electric-v3-tutorial/06_mount_points___tags_.md)
+7. [Tokens](electric-v3-tutorial/07_tokens_.md)
+8. [Client Connection](electric-v3-tutorial/08_client_connection_.md)
+9. [Websocket Adapters](electric-v3-tutorial/09_websocket_adapters_.md)
